@@ -1,0 +1,61 @@
+body
+{
+	background: #EEEEEE;
+	font-size: 16px;
+	margin: 0 5%;
+	width: 90%;
+}
+
+header
+{
+	background: #FFFFFF;
+	display: block;
+	overflow: hidden;
+
+}
+
+header h2
+{
+	float: right;
+}
+
+header img
+{
+	float: left;
+}
+
+nav
+{
+	margin-top: 5px;
+	border: 1px solid blue;
+}
+
+nav ul
+{
+	list-style: none;
+}
+
+nav ul li
+{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+nav ul li a
+{
+	display: block;
+	padding: 0.2em;
+	text-decoration: none;
+}
+
+section
+{
+	background: #EEEEEE;
+}
+
+/*Estilo formulario para registro de pago*/
+section input
+{
+	display: block;
+}
+
