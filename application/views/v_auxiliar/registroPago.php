@@ -19,8 +19,9 @@
 		<label>
 			RFC: <input type="text">
 		</label>
-			<label>
-		<input type="text">
+		<label>
+			Cantidad: <input type="text">
+
 		</label>
 		<label>
 			<input type="text">

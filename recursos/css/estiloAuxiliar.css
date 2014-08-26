@@ -6,6 +6,14 @@ body
 	width: 90%;
 }
 
+footer
+{
+	background: #FFFFFF;
+	border: 1px solid blue;
+	text-align: center;
+}
+
+
 header
 {
 	background: #FFFFFF;
@@ -26,8 +34,10 @@ header img
 
 nav
 {
-	margin-top: 5px;
+	background: #FFFFFF;
 	border: 1px solid blue;
+	margin: 5px 0;
+
 }
 
 nav ul
@@ -56,6 +66,75 @@ section
 /*Estilo formulario para registro de pago*/
 section input
 {
+	/*border: 1px solid rgba(0,0,0,0.3);*/
 	display: block;
+	width: 30em;
+
 }
+
+section input[type=submit]
+{
+
+	display: block;
+	margin-top: 1em;
+	position: relative;
+	right: 20%;
+	left: 25%;
+}
+
+
+section label
+{
+	display: inline-block;
+	margin: 1em 1em;
+	text-align: center;
+}
+
+/*placeholder*/
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+
+/*:-moz-placeholder {
+   color: red;  
+}
+
+::-moz-placeholder {  
+   color: red;  
+}
+
+:-ms-input-placeholder {  
+   color: red;  
+}
+*/
+
+#avatar
+{
+	width: 300px;
+}
+
+#proveedores
+{
+	background: #FFFFFF;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+#proveedores h2
+{
+	text-align: center;
+}
+
+#formulario_proveedores
+{
+	display: block;
+	position: relative;
+	left: 3%;
+}
+
+
+
+
 
