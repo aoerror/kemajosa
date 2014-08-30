@@ -1,7 +1,8 @@
-<footer>
-	<p>
-		Sistema Integral Empresa Kemajosa®
-	</p>
+<footer id="footer" class="navbar-inverse">
+	
+		<h3>Sistema Integral Empresa Kemajosa®</h3>
+
+	
 </footer>
 
 </body>

@@ -22,7 +22,7 @@
 	
 	<nav>
 		<ul>
-			<li><a href="<?=base_url()?>index.php/c_auxiliar/registroPago"> Registro de Pago</a></li>
+			<li><a href="<?=base_url()?>c_auxiliar/registroPago"> Registro de Pago</a></li>
 			<li><a href=""> Graficos</a></li>
 			<li><a href=""> Reportes</a></li>
 		</ul>

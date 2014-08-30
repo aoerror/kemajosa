@@ -1,0 +1,106 @@
+#auxiliar{
+	margin-bottom: 0.2em;
+}
+
+#auxiliar img
+{
+	float: left;
+	
+}
+#auxiliar span
+{
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+	
+}
+
+#auxiliar .titulo_pagina
+{
+	color: rgba(255,255,255,0.4);
+	position: absolute;
+	right: 0;
+	top: 5px;
+}
+
+#nav-auxiliar 
+{	
+	margin: 0.2em;
+}
+
+#nav-auxiliar ul
+{	
+	text-decoration: none;
+}
+
+#nav-auxiliar ul li
+{
+	display: inline-block;
+	margin: 1em 2em;
+}
+
+#nav-auxiliar ul li a
+{
+	display: block;
+	font-size: 1.2em;
+}
+
+#form_proveedores
+{
+	padding: 0 0 0 5em;
+}
+
+#form_proveedores h2
+{
+	text-align: center;
+}
+
+#form_proveedores input[type=submit]
+{
+
+	display: block;
+	margin-top: 1.5em;
+	position: relative;
+	right: 50%;
+	left: 40%;
+	width: 10em;
+
+}
+
+#form_proveedores .seleccion
+{
+
+	display: inline-block;
+	margin: 0 3em 0 0;
+}
+
+#form_proveedores .seleccion select
+{	
+	width: 30em;
+}
+
+#form_proveedores input
+{
+	display: block;
+	width: 30em;
+	margin-right: 3em;
+
+}
+
+#form_proveedores label
+{
+	display: inline-block;
+	/*margin: 1em 1em;*/
+	/*text-align: center;*/
+}
+
+#footer
+{
+	text-align: center;
+}
+
+
+#formulario_proveedores .otro-banco
+{
+	width: 20em;
+}

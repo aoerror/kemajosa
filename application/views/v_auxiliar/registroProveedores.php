@@ -1,86 +1,123 @@
-<section id="proveedores">
+
+<script type="text/javascript">
+
+function crear_input_text(name,id,value,clas)
+{
+    obj_tem= document.createElement("input");
+    obj_tem.type= "text";
+    obj_tem.name = name;
+    obj_tem.id = id;
+    obj_tem.placeholder = value;
+    obj_tem.setAttribute("class",clas);
+        //obj_tem.maxLength = max_long;
+
+    return obj_tem;
+}
+
+function nuevo_elemento(padre,hijo)
+{   
+    padre.appendChild(hijo);
+
+}
+
+function generar(){
+	seleccion_banco = document.getElementById("banco");
+	opcion=seleccion_banco.options[seleccion_banco.selectedIndex].value;
+
+	if(opcion=="otro")
+	{
+	    valor=crear_input_text("otro","otro-banco","otro","form-control otro-banco");
+	    padre= document.getElementsByClassName("seleccion")[0];
+	    nuevo_elemento(padre,valor);
+	}
+}
+
+
+</script>
+
+<section id="form_proveedores" class="container theme-showcase">
 	
 	<h2>Registro de proveedores</h2>
-		
 
-	<div id="formulario_proveedores">
-		<form action="<?=base_url()?>index.php/c_auxiliar/grabar_proveedores">
+	<div id="formulario_proveedores" class="jumbotron">
+		<form class="form-signin" action="<?=base_url()?>c_auxiliar/nuevo_proveedor" method="POST">
 			
 			<label>
 				Nombre Empresa:
-				<input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre de la Empresa" required="true" >
+				<input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre del Proveedor" required="true" class="form-control">
 			</label>
 			
 			<label>
 				RFC:
-				<input type="text" id="rfc_empresa" name="rfc_empresa" placeholder="RFC de la Empresa" required="true" pattern="[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{3}">
+				<input type="text" id="rfc_empresa" name="rfc_empresa" placeholder="RFC del Proveedor" required="true" pattern="[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{3}" class="form-control">
 			</label>
-
+		<div class="seleccion">
 			<label>
-				Banco de la Empresa:
-				<input type="text" id="banco" name="banco" placeholder="Banco" required="true">
+				Banco del Proveedor:
+				<select id="banco" name="banco" onChange='generar()' class="form-control" required="true">
+				  <option value=""></option>
+			      <option value="Bancomer">Bancomer</option>
+			      <option value="Santander serfin">Santander serfin</option>
+			      <option value="Banamex">Banamex</option>
+			      <option value="HSBC">HSBC</option>
+			      <option value="ACOTIABANK INVERLAT">ACOTIABANK INVERLAT</option>
+			      <option value="otro">otro</option>
+			    </select>
+			
 			</label>
-
+		</div>
 			<label>
 				Sucursal de Banco de la Empresa:
-				<input type="text" id="sucursal" name="sucursal" placeholder="Sucursal" required="true"> 
+				<input type="text" id="sucursal" name="sucursal" placeholder="Sucursal" required="true" class="form-control"> 
 			</label>
 
 			<label>
 				No. de Cuenta: 
-				<input type="number" id="n_cuenta" name="n_cuenta" placeholder="Número de Cuenta" required="true">
+				<input type="text" id="n_cuenta" name="n_cuenta" placeholder="Número de Cuenta" required="true" class="form-control">
 			</label>
 
 			<label>
 				CLABE: 
-				<input type="numbre" id="clabe" name="clabe" placeholder="CLABE" required="true" pattern="[0-9]{18}">
+				<input type="text" id="clabe" name="clabe" placeholder="CLABE" required="true" pattern="[0-9]{18}" class="form-control">
 			</label>
 
 			<label>
 				Referencia:
-				<input type="text" id="referencia" name="referencia" placeholder="Referencia">
+				<input type="text" id="referencia" name="referencia" placeholder="Referencia" class="form-control">
 			</label>
 
 			<label>
 				Correo Electrónico:
-				<input type="email" id="email" name="email" placeholder="Correo Electrónico">
+				<input type="email" id="email" name="correo" placeholder="Correo Electrónico" required="true" class="form-control">
 			</label>
 
 			<label>
 				Teléfono:
-				<input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+				<input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required="true" class="form-control">
 			</label>
 
 			<label>
 				Fax:
-				<input type="tel" id="fax" name="telefono" placeholder="Fax">
+				<input type="tel" id="fax" name="fax" placeholder="Fax" class="form-control">
 			</label>
 
 			<label>
 				Celular:
-				<input type="tel" id="celular" name="celular" placeholder="Celular">
+				<input type="tel" id="celular" name="celular" placeholder="Celular" class="form-control">
 			</label>
 
 			<label>
-				Encargada:
-				<input type="text" id="encargada" name="encargada" placeholder="Nombre de la Persona que Atiende">
+				Encargado/a:
+				<input type="text" id="encargada" name="encargada" placeholder="Nombre de la Persona que Atiende" class="form-control">
 			</label>
 
 				
-			<input type="submit" value="Guardar">
+			<input type="submit" value="Guardar" class="btn btn-primary btn-enviar">
 
 		</form>	
 	
 
 	</div>
 	
-
-
-
-
-
-
-
-
 
 </section>

@@ -115,14 +115,14 @@ section label
 	width: 300px;
 }
 
-#proveedores
+#form_proveedores
 {
 	background: #FFFFFF;
 	margin-bottom: 2em;
-	padding: 1em;
+	padding: 0.5em 1em;
 }
 
-#proveedores h2
+#form_proveedores h2
 {
 	text-align: center;
 }
