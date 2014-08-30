@@ -11,20 +11,30 @@ class C_auxiliar extends CI_Controller {
 		// $this->load->model('registro_proveedor');
 	}
 
-	public function index()
-	{
-		$this->load->view('v_auxiliar/index');
-	}
+	// public function index()
+	// {
+	// 	$this->load->view('v_auxiliar/index');
+	// }
 
-	public function registroPago()
+	 public function index() {
+     //   $this->load->view('v_auxiliar/v_consultarProveedor');
+
+
+        $data['title'] = 'CONSULTAR PROVEEDORES';
+        	$data['mensaje'] = '';
+        	$data['view'] = 'v_auxiliar/v_consultarProveedor';
+			$this->load->view('contenido/contenido', $data);
+    }
+
+	public function ver_proveedor($proveedor)
 	{	
-		$this->load->view('v_auxiliar/registroPago');
+		echo $proveedor;
+		// $this->load->view('v_auxiliar/registroPago');
 	}
 
-	public function registroProveedores()
+	public function ver_proveedores()
 	{
-		$data['view']='v_auxiliar/registroProveedores';
-		$this->load->view('contenido/contenido', $data);
+		echo $this->m_proveedores->getProveedores();
 
 	}
 
