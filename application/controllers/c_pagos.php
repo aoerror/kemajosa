@@ -5,15 +5,18 @@ class C_pagos extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 
-		$this->load->helper(array('download','file','form','html', 'form'));
+		// $this->load->helper(array('download','file','form','html', 'form'));
 
-		$this->folder = 'uploads/';
+		$this->load->helper(array('form','file','download'));
+		$this->load->model('m_proveedores');
+
+		$this->folder = './uploads/';
 	}
 
 	public function index()
 	{
-		$data['title'] = 'REGISTRO PAGO';
-    	$data['mensaje'] = '';
+		$data['title'] = 'REGISTRO TRANSFERENCIA';
+    	$data['mensaje']['error'] = '';
     	$data['contenido'] = '';
     	$data['view'] = 'v_auxiliar/registroPago';
 		$this->load->view('contenido/contenido', $data);
@@ -26,24 +29,56 @@ class C_pagos extends CI_Controller {
 		$config['remove_spaces']=TRUE;
 		$config['max_size']    = '2048';
 
+		$config['file_name']=strtoupper($this->input->post('nombre').'-'.$this->input->post('fecha'));
+
 		$this->load->library('upload', $config);
 
 		if ( ! $this->upload->do_upload())
 		{
-			$error = array('error' => $this->upload->display_errors());
-			redirect(base_url().'c_pagos');
+			$data['title'] = 'SUBIR ARCHIVO';
+	    	$data['mensaje'] = array('error' => $this->upload->display_errors());
+	    	$data['contenido'] = '';
+	    	$data['view'] = 'v_auxiliar/registroPago';
+			$this->load->view('contenido/contenido', $data);
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-			$this->load->view('success', $data);
+			// $data = array('upload_data' => $this->upload->data());
+			// $this->load->view('success', $data);
+			$data = $this->upload->data();
 
+			$archivo = array (
+				'nombre_archivo' => $config['file_name'] ,
+				'ruta_archivo'	 => 'uploads/'.$data['file_name'],
+				'fecha'  => $this->input->post('fecha'),
+				'descripcion' => $this->input->post('descripcion'),
+				'correo_enviado' => $this->input->post('correo'),
+				
+			);
+
+			$this->m_proveedores->guardar_archivo($archivo);
+
+
+			redirect(base_url().'c_pagos/listaArchivos');
 		}
 	}
 
-	public function sucess()
+	public function listaArchivos()
 	{
-		echo "Hola mundo :D";
+		$files = get_filenames($this->folder, FALSE);
+
+		if ($files) {
+			$data['files'] = $files;
+		}else{
+			$data['files'] = NULL;
+		}
+
+		$data['title'] = 'LISTA DE ARCHIVOS';
+    	$data['mensaje'] = '';
+    	$data['contenido'] = '';
+    	$data['view'] = 'v_auxiliar/lista_archivos';
+		$this->load->view('contenido/contenido', $data);
+
 	}
 
 
@@ -62,43 +97,39 @@ class C_pagos extends CI_Controller {
 	}
 //************ DESCARGA DE ARCHIVOS ***********************
 
-	public function downloads($name){
+	public function descargarArchivos($name){
 
 		$data = file_get_contents($this->folder.$name); 
 		force_download($name,$data); 
 
 	}
 
-
-	public function registroPago()
+	public function verArchivo($name)
 	{
-		// $target_path = base_url()."uploads/";
-		// $target_path = $target_path . basename( $_FILES['file']['name']); if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) { echo "El archivo ". basename( $_FILES['file']['name']). " ha sido subido";
-		// } else{
-		// echo "Ha ocurrido un error, trate de nuevo!";
-		// }
+		$data['contenido'] = $name;
 
-	
-		$uploadedfileload="true";
-		$uploadedfile_size=$_FILES['uploadedfile'][size];
-		echo $_FILES[uploadedfile][name];
-		if ($_FILES[uploadedfile][size]>200000)
-			{$msg=$msg."El archivo es mayor que 200KB, debes reduzcirlo antes de subirlo<BR>";
-		$uploadedfileload="false";}
+		$data['title'] = 'VER ARCHIVOS';
+    	// $data['view'] = 'v_auxiliar/ver_archivo';
+		// $this->load->view('contenido/contenido', $data);
+		$this->load->view('v_auxiliar/ver_archivo', $data);
 
-		if (!($_FILES[uploadedfile][type] =="image/pjpeg" OR $_FILES[uploadedfile][type] =="image/gif"))
-			{$msg=$msg." Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos<BR>";
-		$uploadedfileload="false";}
+	}
 
-		$file_name=$_FILES[uploadedfile][name];
-		$add="uploads/$file_name";
-		if($uploadedfileload=="true"){
 
-			if(move_uploaded_file ($_FILES[uploadedfile][tmp_name], $add)){
-				echo " Ha sido subido satisfactoriamente";
-			}else{echo "Error al subir el archivo";}
 
-		}else{echo $msg;}
+  //valida nombre de archivo no exista
+
+	public function verificar_archivo()
+	{
+		$nombre = strtoupper($this->input->post('nombre').'-'.$this->input->post('fecha'));
+
+		$query = $this->m_proveedores->archivos($nombre);
+
+		if($query->num_rows()>0){
+			return false;
+		}else{
+			return true;
+		}
 
 	}
 }

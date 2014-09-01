@@ -132,6 +132,21 @@ class M_proveedores extends CI_Model {
         return json_encode($responce);
     }
 
+
+    //valida nomrbe archivo controlador c_pago
+
+    public function archivos($nombre)
+    {
+    	$this->db->where('nombre_archivo',$nombre);
+    	$query = $this->db->get('archivos_pagos');
+
+    	return $query;
+    }
+
+    public function guardar_archivo($archivo)
+    {
+    	$this->db->insert('archivos_pagos',$archivo);
+    }
 }
 
 /* End of file m_auxiliar.php */

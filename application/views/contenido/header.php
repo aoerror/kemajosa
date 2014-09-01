@@ -19,6 +19,9 @@
         <script src="<?=base_url()?>dist/js/jquery-1.11.0.min.js"></script>
         <script src="<?=base_url()?>dist/js/bootstrap-datepicker.js"></script>
         <script src="<?=base_url()?>dist/js/movimiento.js"></script>
+        <script src="<?=base_url()?>recursos/js/jquery_validate.js"></script>
+
+
 
 
 

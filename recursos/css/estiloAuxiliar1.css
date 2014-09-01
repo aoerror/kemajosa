@@ -81,18 +81,19 @@
 
 
 
-#form_proveedores
+#form_proveedores, #form_archivo
 {
 	padding: 0 0 0 5em;
 }
 
-#form_proveedores h2, #v_proveedor h2
+#form_proveedores h2, #v_proveedor h2, #form_archivo h2, #form_archivo h2
+
 {
 	text-align: center;
 }
 
 
-#form_proveedores input[type=submit]
+#form_proveedores input[type=submit], #form_archivo input[type=submit]
 {
 
 	display: block;
@@ -104,19 +105,19 @@
 
 }
 
-#form_proveedores .seleccion
+#form_proveedores .seleccion, #form_archivo .seleccion
 {
 
 	display: inline-block;
 	margin: 0 3em 0 0;
 }
 
-#form_proveedores .seleccion select
+#form_proveedores .seleccion select, #form_archivo .seleccion select
 {	
 	width: 30em;
 }
 
-#form_proveedores input
+#form_proveedores input, #form_archivo input
 {
 	display: block;
 	width: 30em;
@@ -124,7 +125,7 @@
 
 }
 
-#form_proveedores label
+#form_proveedores label, #form_archivo label
 {
 	display: inline-block;
 	/*margin: 1em 1em;*/
