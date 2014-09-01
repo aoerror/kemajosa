@@ -21,11 +21,26 @@
 
 	
 	<nav>
-		<ul>
-			<li><a href="<?=base_url()?>c_auxiliar/registroPago"> Registro de Pago</a></li>
-			<li><a href=""> Graficos</a></li>
-			<li><a href=""> Reportes</a></li>
-		</ul>
+
+		<li class="parent"><a href="#">Cristalab</a>
+         <ul>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">Foros</a></li>
+            <li><a href="#">Tutoriales</a></li>
+            <li ><a href="#">Cursos</a></li>
+         </ul>
+      </li>
+      <li><a href="#">Mejorando.la</a></li>
+      <li><a href="#">L4C</a></li>
+      <li class="parent"><a href="#">Mas de Cristalab</a>
+         <ul>
+            <li><a href="#">Publica un tutorial</a></li>
+            <li><a href="#">¿Qué es Cristalab?</a></li>
+            <li><a href="#">Anime</a></li>
+         </ul>
+      </li>
+      
+		
 	</nav>
 
 	<section>

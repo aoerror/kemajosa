@@ -2,15 +2,79 @@
 
 class M_proveedores extends CI_Model {
 
-	public function __construct() {
+	function __construct() {
         parent::__construct();
     }
 
+// FUNCION DE REGISTRO  DE PROVEEDOR EN LA BASE DE DATOS
+    // PARAMETRO QUE RECIBE - ARREGLO CON DATOS DEL PROVEEDOR
 	public function registro($proveedores)
     {
     	$this->db->insert('proveedores',$proveedores);    	
     }
 
+
+// FUNCION DE CONSULTA DE PROVEEDOR EN LA BASE DE DATOS
+    // PARAMETRO QUE RECIBE - ID_PROVEEDOR-
+    // DEVUELVE ARREGLO CON DATOS DE PROVEEDOR
+
+    public function consultar($id_proveedor)
+    {
+    	$this->db->where('id_proveedor', $id_proveedor);
+    	$query = $this->db->get('proveedores');
+
+    	if ($query->num_rows() == 1) {
+    		$row = $query->row();
+
+    		$data['existe'] = true;
+
+    		$data['contenido'] = array(
+
+    			'id_proveedor' 		=> $row->id_proveedor,
+    			'nombre' 			=> $row->empresa,
+    			'rfc'				=> $row->rfc,
+    			'banco'				=> $row->banco,
+    			'sucursal'			=> $row->sucursal,
+    			'cuenta'			=> $row->cuenta,
+    			'clabe'				=> $row->clabe,
+    			'referencia'		=> $row->referencia,
+    			'correo'			=> $row->correo,
+    			'telefono'			=> $row->telefono,
+    			'fax'				=> $row->fax,
+    			'celular'			=> $row->celular,
+    			'encargado'			=> $row->atiende
+    			);
+
+    	}
+    	else
+    	{
+    		$data['existe'] = false;
+    	}
+
+    	return $data;
+
+    }
+
+
+    //FUNCION ACTUALIZAR PROVEEDOR
+    	//RECIBE PARAMETRO ID_PROVEEDOR Y ARREGLO CON DATOS A ACTUALIZAR
+    public function actualizar_proveedor($id_proveedor, $datos)
+    {
+    	$this->db->where('id_proveedor', $id_proveedor);
+		$this->db->update('proveedores', $datos);
+    	
+    }
+
+
+    //FUNCION ELIMINAR PROVEEDOR
+    	//RECIBE PARAMETRO ID_PROVEEDOR 
+    public function eliminarProveedor($id_proveedor)
+    {
+    	$this->db->where('id_proveedor', $id_proveedor);
+		$this->db->delete('proveedores');
+    }
+
+// FUNCION PARA LLENAR LAS TABLAS CON JQGRID
     public function getProveedores()
     {
     	$page = $this->input->post('page'); //pagina 

@@ -21,14 +21,18 @@ function nuevo_elemento(padre,hijo)
 }
 
 function generar(){
-	seleccion_banco = document.getElementById("banco");
-	opcion=seleccion_banco.options[seleccion_banco.selectedIndex].value;
-
+	seleccion_banco = $('#banco');
+	opcion=seleccion_banco.val();
 	if(opcion=="otro")
 	{
-	    valor=crear_input_text("otro","otro-banco","otro","form-control otro-banco");
+	    valor=crear_input_text("otro","otro-banco","Escriba el nombre del Banco","form-control otro-banco");
 	    padre= document.getElementsByClassName("seleccion")[0];
 	    nuevo_elemento(padre,valor);
+	}
+	else
+	{
+	    valor = $('#otro-banco');
+	    valor.remove();
 	}
 }
 
@@ -57,11 +61,11 @@ function generar(){
 				<select id="banco" name="banco" onChange='generar()' class="form-control" required="true">
 				  <option value=""></option>
 			      <option value="Bancomer">Bancomer</option>
-			      <option value="Santander serfin">Santander serfin</option>
+			      <option value="Santander Serfin">Santander Serfin</option>
 			      <option value="Banamex">Banamex</option>
 			      <option value="HSBC">HSBC</option>
-			      <option value="ACOTIABANK INVERLAT">ACOTIABANK INVERLAT</option>
-			      <option value="otro">otro</option>
+			      <option value="Scotiabank Inverlat">Scotiabank Inverlat</option>
+			      <option value="otro">Otro...</option>
 			    </select>
 			
 			</label>
@@ -108,7 +112,7 @@ function generar(){
 
 			<label>
 				Encargado/a:
-				<input type="text" id="encargada" name="encargada" placeholder="Nombre de la Persona que Atiende" class="form-control">
+				<input type="text" id="atiende" name="atiende" placeholder="Nombre de la Persona que Atiende" class="form-control">
 			</label>
 
 				
