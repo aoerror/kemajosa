@@ -51,6 +51,9 @@ function generar(){
 				<input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre del Proveedor" required="true" class="form-control">
 			</label>
 			
+		<div id="registro">
+					
+		</div>	
 			<label>
 				RFC:
 				<input type="text" id="rfc_empresa" name="rfc_empresa" placeholder="RFC del Proveedor" required="true" pattern="[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{3}" class="form-control">
@@ -70,6 +73,7 @@ function generar(){
 			
 			</label>
 		</div>
+
 			<label>
 				Sucursal de Banco de la Empresa:
 				<input type="text" id="sucursal" name="sucursal" placeholder="Sucursal" required="true" class="form-control"> 
